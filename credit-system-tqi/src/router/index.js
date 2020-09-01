@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
+import Proposal from '../views/Proposal.vue'
+import Accompany from '../views/Accompany.vue'
 
 Vue.use(VueRouter)
 
@@ -15,6 +17,14 @@ Vue.use(VueRouter)
     path: '/register',
     name: 'Register',
     component: Register
+  },{
+    path: '/proposal/:id',
+    name: 'Proposal',
+    component: Proposal
+  },{
+    path: '/accompany/:id',
+    name: 'Accompany',
+    component: Accompany
   }
 ]
 
