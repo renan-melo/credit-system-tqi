@@ -1,0 +1,17 @@
+{
+	" hospedagem " : {
+		" public " : " dist " ,
+		" ignorar " : [
+			" firebase.json " ,
+			" ** /. * " ,
+			" * / node_modules / * "
+		],
+		" reescreve " : [
+			{
+				" fonte " : " ** " ,
+				" destino " : " /index.html "
+			}
+		]
+
+	}
+}

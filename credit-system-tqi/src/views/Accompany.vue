@@ -73,32 +73,9 @@ export default {
     },
     data() {
         return {
-            parcelaSelecionada: 0,
-            valorSelecionado: 0,
-            valores: [],
-            valor: '',
-            parcelas: [{
-                num: 12,
-                taxa: 1.45,
-                values: []
-            }, {
-                num: 24,
-                taxa: 1.45,
-                values: []
-            }, {
-                num: 36,
-                taxa: 2.84,
-                values: []
-            }, {
-                num: 48,
-                taxa: 2.84,
-                values: []
-            }, {
-                num: 60,
-                taxa: 2.84,
-                values: []
-            }],
-            id: ''
+            dataUser: {
+
+            }
 
         }
     },
@@ -131,14 +108,8 @@ export default {
     mounted() {
         this.id = this.$router.history.current.params.id
         const users = JSON.parse(localStorage.getItem('users'));
-        this.renda = users[this.id].renda
-        const primeiroValor = parseInt(this.renda * 2)
-        const segundoValor = parseInt(this.renda * 4)
-        const terceiroValor = parseInt(this.renda * 6)
-
-        this.valores.push(primeiroValor, segundoValor, terceiroValor)
-
-        this.calcularParcelas()
+        this.dataUser = users[this.id]
+        console.log(this.dataUser);
 
     }
 }
