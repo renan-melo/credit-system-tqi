@@ -1,5 +1,5 @@
 {
-  "projetos": {
-    "default": "credit-system-tqi"
+  "projects":{
+    "default" : "credit-system-tqi"
   }
 }

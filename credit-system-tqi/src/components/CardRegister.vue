@@ -169,8 +169,7 @@ export default {
                 cidade: this.cidade,
                 estado: this.estado,
                 email: this.email,
-                senha: this.senha,
-                emprestimo: {}
+                senha: this.senha
             }
             const users = localStorage.getItem('users');
             if (users !== 'null' && users !== null) {

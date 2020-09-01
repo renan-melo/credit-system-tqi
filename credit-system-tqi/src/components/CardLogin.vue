@@ -42,17 +42,25 @@ export default {
             let id = null
             const users = JSON.parse(localStorage.getItem('users'));
             const usersArray = Object.keys(users)
+            let proposta = null
             usersArray.forEach(element => {
                 const user = users[element]
                 if (user.email === this.email && String(user.senha) === String(this.senha)) {
                     id = element
+                    proposta = user.hasOwnProperty("emprestimo")
                 }
             });
 
             if (id) {
-                this.$router.push({
-                    path: `/proposal/${id}`
-                })
+                if (proposta) {
+                    this.$router.push({
+                        path: `/accompany/${id}`
+                    })
+                } else {
+                    this.$router.push({
+                        path: `/proposal/${id}`
+                    })
+                }
             } else {
                 this.mensagem = "Email ou senha inválidos."
             }

@@ -8,7 +8,8 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import VueAnalytics from 'vue-analytics';
 
 Vue.use(VueAnalytics, {
-  id: 'UA-173384593-1',
+  id: 'UA-244964864-1',
+
   router
 });
  

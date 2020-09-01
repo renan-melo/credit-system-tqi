@@ -129,6 +129,8 @@ export default {
         salvarProposta() {
             const users = JSON.parse(localStorage.getItem('users'));
             users[this.id].emprestimo = this.parcelas[this.parcelaSelecionada]
+            users[this.id].valorEmprestimo = this.valores[this.valorSelecionado]
+
             localStorage.setItem('users', JSON.stringify(users))
             this.$router.push({
                 path: `/accompany/${this.id}`

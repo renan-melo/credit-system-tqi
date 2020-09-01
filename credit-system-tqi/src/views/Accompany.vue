@@ -6,30 +6,14 @@
         <h1 class=" ">Acompanhe sua proposta</h1>
 
         <div class="pt-5" id="Calcule">
-
-            <div class="form-group col-md-12">
-                <!-- <label for="income" class="d-flex justify-content-center font-weight-bold">Informe o valor pretendido</label> -->
-                <h3>Informe o valor pretendido</h3>
-                <h5>Nós encontraremos a melhor opção para vocês</h5>
-
-                <div class="row col-12 d-flex justify-content-center">
-                    <!-- <the-mask :mask="['R$ ####,##','R$ #####,##','R$ ######,##']" class="form-control col-2" v-model="valor" id="valor" /> -->
-
-                    <div class='d-flex justify-content-center align-items-center my-2'>
-
-                        <button type="button" :class="valorSelecionado === index?'btn-success':'btn-outline-success' " class="btn btn-lg m-2" v-for="(valor, index) in valores" :key="index" @click="alterarValor(index)">
-                            R$ {{valor}},00
-                        </button>
-                    </div>
-                </div>
+            <div class="pb-2 my-3">
+                <h6 class=" ">Valor do emprestimo:</h6>
+                <h2 class=" ">R$ {{valorEmprestimo}}</h2>
             </div>
 
-            <h4>Parcelas</h4>
-            <div class='d-flex justify-content-center align-items-center mb-5'>
-
-                <button type="button" :class="parcelaSelecionada === index?'btn-primary':'btn-outline-primary' " class="btn m-1" v-for="(parcela, index) in parcelas" :key="index" @click="alterarParcela(index)">
-                    {{parcela.num}}x
-                </button>
+            <div class="container-fluid d-flex pb-2 my-3 justify-content-between">
+                <h4 class=" ">Status:<span> Pendente</span></h4>
+                <h4>{{num}}x</h4>
             </div>
             <div class="table-custom">
                 <table class="table ">
@@ -42,7 +26,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr v-for="(parcela, index) in parcelas[parcelaSelecionada].values" :key="index">
+                        <tr v-for="(parcela, index) in values" :key="index">
                             <td>{{parcela.num}}º</td>
                             <td>{{parcela.taxa}}%</td>
                             <td>R${{parcela.value}}</td>
@@ -51,10 +35,14 @@
                 </table>
 
             </div>
+            <div class="container-fluid d-flex pb-2 my-3 justify-content-between">
+                <h3 class=" ">Total:</h3>
+                <h3 class=" ">R$ {{valorTotal}}</h3>
+            </div>
         </div>
 
         <div class="btn btn-primary btn-lg text-uppercase">
-            <button type="button pt-t" class="btn btn-primary btn-lg ">Confirmar</button>
+            <button type="button" class="btn btn-primary px-5" @click.prevent="sair()">Sair</button>
         </div>
 
     </form>
@@ -73,45 +61,34 @@ export default {
     },
     data() {
         return {
-            dataUser: {
-
-            }
-
+            dataUser: {},
+            valorEmprestimo: 0,
+            valorTotal: 0,
+            values: [],
+            num: 0
         }
     },
-
     methods: {
-        alterarValor(index) {
-            this.valorSelecionado = index
-            this.calcularParcelas()
-        },
-        alterarParcela(index) {
-            this.parcelaSelecionada = index
-            this.calcularParcelas()
-        },
-        calcularParcelas() {
-            const valorAtual = this.valores[this.valorSelecionado] / this.parcelas[this.parcelaSelecionada].num
-            this.parcelas[this.parcelaSelecionada].values = []
-            for (let i = 0; i < this.parcelas[this.parcelaSelecionada].num; i++) {
-                const result = {
-                    num: i + 1,
-                    taxa: this.parcelas[this.parcelaSelecionada].taxa,
-                    value: parseFloat(valorAtual + (this.valores[this.valorSelecionado] * this.parcelas[this.parcelaSelecionada].taxa) / 100).toFixed(2)
-                }
-                this.parcelas[this.parcelaSelecionada].values.push(result)
-            }
-
-        },
-
+        sair() {
+            this.$router.push({
+                path: `/`
+            })
+        }
     },
 
     mounted() {
         this.id = this.$router.history.current.params.id
         const users = JSON.parse(localStorage.getItem('users'));
         this.dataUser = users[this.id]
-        console.log(this.dataUser);
-
+        const taxa = this.dataUser.emprestimo.values[0].taxa
+        const numeroParcela = this.dataUser.emprestimo.num
+        const juros = (this.dataUser.valorEmprestimo * taxa) / 100 * numeroParcela
+        this.valorEmprestimo = parseFloat(this.dataUser.valorEmprestimo).toFixed(2)
+        this.valorTotal = parseFloat(this.dataUser.valorEmprestimo + juros).toFixed(2)
+        this.values = this.dataUser.emprestimo.values
+        this.num = this.dataUser.emprestimo.num
     }
+
 }
 </script>
 

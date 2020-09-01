@@ -1,15 +1,15 @@
 {
-	" hospedagem " : {
-		" public " : " dist " ,
-		" ignorar " : [
-			" firebase.json " ,
-			" ** /. * " ,
-			" * / node_modules / * "
+	"hosting":{
+		"public":"dist",
+		"ignore": [
+			"firebase.json",
+			"*/.",
+			"*/node_modules/*"
 		],
-		" reescreve " : [
+		"rewrites":[
 			{
-				" fonte " : " ** " ,
-				" destino " : " /index.html "
+				"source":"**",
+				"destination":"/index.html"
 			}
 		]
 
