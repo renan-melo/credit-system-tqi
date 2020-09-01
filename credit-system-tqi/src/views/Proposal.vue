@@ -1,23 +1,21 @@
 <template>
-<div class="container-fluid  d-flex justify-content-center p-3">
+<div class="container-fluid box d-flex justify-content-center p-3">
 
-    <form class="form-box col-6 p-4 border" @submit.prevent="salvarProposta()">
+    <form class="form-box col-md-12 col-lg-8 col-xl-6  p-4 border" @submit.prevent="salvarProposta()">
 
         <h1 class=" ">Solicitação de Empréstimo</h1>
 
         <div class="pt-5" id="Calcule">
 
             <div class="form-group col-md-12">
-                <!-- <label for="income" class="d-flex justify-content-center font-weight-bold">Informe o valor pretendido</label> -->
                 <h3>Informe o valor pretendido</h3>
                 <h5>Nós encontraremos a melhor opção para vocês</h5>
 
                 <div class="row col-12 d-flex justify-content-center">
-                    <!-- <the-mask :mask="['R$ ####,##','R$ #####,##','R$ ######,##']" class="form-control col-2" v-model="valor" id="valor" /> -->
 
                     <div class='d-flex justify-content-center align-items-center my-2'>
 
-                        <button type="button" :class="valorSelecionado === index?'btn-success':'btn-outline-success' " class="btn btn-lg m-2" v-for="(valor, index) in valores" :key="index" @click="alterarValor(index)">
+                        <button type="button" :class="valorSelecionado === index?'btn-success':'btn-outline-success' " class="btn btn-md col-sm-3 col-md-4 col-lg-6 col-xl-6 m-1 pl-1" v-for="(valor, index) in valores" :key="index" @click="alterarValor(index)">
                             R$ {{valor}},00
                         </button>
                     </div>
@@ -158,6 +156,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 
 <style lang="css" scoped>
+.box {
+    min-height: 100vh;
+}
+
 .form-box {
     background: white;
 

@@ -1,9 +1,9 @@
 <template>
 <div class="container-fluid d-flex justify-content-center p-0">
 
-    <form class="form-box col col-sm-12  col-md-12 col-lg-5 px-5 pb-3 pt-1 rounded" @submit.prevent="salvarCadastro()">
+    <form class="form-box col col-sm-12  col-md-12 col-lg-5 px-5 pb-3 pt-1 " @submit.prevent="salvarCadastro()">
         <div class="">
-            <img alt=" Vue logo" src="../assets/logoavatar.png" class="col-3 pb-3">
+            <img alt=" Vue logo" src="../assets/logoavatar.png" class="col-sm-2 col-md-3 col-lg-4 col-xl-4 pb-3">
         </div>
 
         <div class="d-flex justify-content-center pb-3">
@@ -86,7 +86,7 @@
             </div>
         </div>
 
-        <div class="border-top pt-3 pb-3">
+        <div class=" pt-3 pb-3">
             <button type="submit" class="btn btn-primary btn-lg px-5">Salvar</button>
         </div>
     </form>

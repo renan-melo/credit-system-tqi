@@ -1,7 +1,7 @@
 <template>
-<div class="container-fluid  d-flex justify-content-center p-3">
+<div class="container-fluid box d-flex justify-content-center p-3">
 
-    <form class="form-box col-6 p-4 border">
+    <form class="form-box col col-md-12 col-lg-8 col-xl-6  p-4 border">
 
         <h1 class=" ">Acompanhe sua proposta</h1>
 
@@ -12,7 +12,7 @@
             </div>
 
             <div class="container-fluid d-flex pb-2 my-3 justify-content-between">
-                <h4 class=" ">Status:<span> Pendente</span></h4>
+                <h4 class=" ">Status:<span class="text-warning"> Pendente</span></h4>
                 <h4>{{num}}x</h4>
             </div>
             <div class="table-custom">
@@ -95,6 +95,10 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 
 <style lang="css" scoped>
+.box {
+    min-height: 100vh;
+}
+
 .form-box {
     background: white;
 
