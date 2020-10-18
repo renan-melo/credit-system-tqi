@@ -4,11 +4,11 @@
     <form class="form-box col col-sm-8  col-md-5 col-lg-3 p-5 rounded" @submit.prevent="logar()">
         <img alt=" Vue logo" src="../assets/logo1.png" class="col-12">
         <div class="form-group">
-            <label class="d-flex justify-content-first ">Email</label>
+            <label class="d-flex justify-content-first ">Email User</label>
             <input type="email" class="form-control" v-model="email" required>
         </div>
         <div class="form-group">
-            <label class="d-flex justify-content-first ">Senha</label>
+            <label class="d-flex justify-content-first ">Password</label>
             <input type="password" class="form-control" v-model="senha" required>
         </div>
         <div class="form-group">
